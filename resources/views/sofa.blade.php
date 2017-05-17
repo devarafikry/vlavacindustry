@@ -18,14 +18,14 @@
 				 <nav class="navbar navbar-default navbar-fixed-side" style="width: 300px;">
 				 <div style="margin-left: 15px;">
 					<left>
-				<b><H4>SOFA</H4></b>
+				<b><H4>Kursi</H4></b>
 				<hr>
-					<h5><a href="#">Sofa</a></h5>
-					<h5><a href="#">Chair</a></h5>
-					<h5><a href="#">Table</a></h5><br>
+					<h5><a href="#">Kursi</a></h5>
+					<h5><a href="#">Meja</a></h5><br>
 					<hr>
 					<h4>Harga</h4>
 					<hr>
+					
 					<div class="tes">
 						<div style="width: 120px; display: inline-block;" >
 
@@ -69,29 +69,29 @@
 			  </ul>
 			</div>
         <hr>
-        <?php
-
-          for ($i=1; $i<10 ; $i++) {
-            ?><a href={{url('/product/id')}}>
+       @foreach($product as $product)
+	
+		<a href={{url('/product/id')}}>
             <div class="card">
-            <img src={{asset('storage/sofas.jpg')}} height=200px width=200px alt='error' style="margin-right:25px">
+            <img src={{asset('storage/'.$product->img)}} height=200px width=200px alt='error' style="margin-right:25px">
               <div >
                 <center>
-                <h4 style="padding-bottom:10px"><b>Sofa</b></h4>
+                <h4 style="padding-bottom:10px"><b>{{$product->nama}}</b></h4>
 							 <p>Architect & Engineer</p>
-							 <p>Rp.1.600.000</p>
+							 <p>Rp. {{number_format($product->harga,0,",",".")}}</p>
 								 <img src="{{asset('storage/star.jpg')}}" height=50px>
               </center>
               </div>
             </div>
           </a>
             <?php
-            if($i%3==0){?>
+            if(count($product)>3){?>
                 <br><br>
               <?php
             }
-          }
+          
         ?>
+        	@endforeach
     </div>
   </div>
 
