@@ -148,7 +148,7 @@
             </li>
         </ul>
         <div class="pull-right" style="margin-top:10px">
-          <a href="#">
+          <a href="#aut">
          <img src={{asset('storage/cart.png')}} width="30px" alt='error'></a>
        </div>
     </div></div>
