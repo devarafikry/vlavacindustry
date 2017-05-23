@@ -51,7 +51,7 @@ p {
 }
 </style>
 
-<div class="container" style="padding-top : 120px">
+<div class="container" style="padding-top : 120px; margin-bottom: 20%;" >
 <div class="row">
   <div class="col-md-8">
     <h6><a href={{url('/')}}>Home</a>-><a href={{url('/roomlist/livingroom/product')}}>Sofa</a></h6>
@@ -59,35 +59,19 @@ p {
         <div class='carousel-outer'>
             <!-- Wrapper for slides -->
             <div class='carousel-inner'>
-                <div class='item active'>
-                    <img src={{asset('storage/sf2.jpeg')}} alt='' />
+          
+            @foreach($img as $imgsingle)
+            @if($imgsingle == $img[0])
+             <div class='item active'>
+                    <img src={{asset('storage/'.$imgsingle->image)}}  alt='' />
                 </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf1.jpeg')}}  alt='' />
+         
+            @else
+                      <div class='item '>
+                    <img src={{asset('storage/'.$imgsingle->image)}} alt='' />
                 </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf2.jpeg')}} alt='' />
-                </div>
-
-                <div class='item'>
-                    <img src={{asset('storage/sf1.jpeg')}}  alt='' />
-                </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf2.jpeg')}} alt='' />
-                </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf1.jpeg')}} alt='' />
-                </div>
-
-                <div class='item'>
-                    <img src={{asset('storage/sf2.jpeg')}} alt='' />
-                </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf1.jpeg')}}  alt='' />
-                </div>
-                <div class='item'>
-                    <img src={{asset('storage/sf2.jpeg')}}  alt='' />
-                </div>
+            @endif
+            @endforeach
             </div>
 
             <!-- Controls -->
@@ -101,37 +85,51 @@ p {
 
         <!-- Indicators -->
         <ol class='carousel-indicators mCustomScrollbar'>
-            <li data-target='#carousel-custom' data-slide-to='0' class='active'>    <img src={{asset('storage/sf2.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='1'><img src={{asset('storage/sf1.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='2'> <img src={{asset('storage/sf2.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='3'><img src={{asset('storage/sf1.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='4'> <img src={{asset('storage/sf2.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='5'><img src={{asset('storage/sf1.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='6'> <img src={{asset('storage/sf2.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='7'> <img src={{asset('storage/sf1.jpeg')}} alt='' width=150px height=100px /></li>
-            <li data-target='#carousel-custom' data-slide-to='8'> <img src={{asset('storage/sf2.jpeg')}} alt='' width=150px height=100px /></li>
+           <?php $i =1 ?>
+            @foreach($img2 as $img2single)
+
+            @if($img2single == $img2[0])
+             <li data-target='#carousel-custom' data-slide-to='0' class='item active'>    <img src={{asset('storage/'.$img2single->image)}} alt='' width=150px height=100px /></li>
+                  
+            @else
+         
+               <li data-target='#carousel-custom' data-slide-to=<?php echo $i?> class="item"><img src={{asset('storage/'.$img2single->image)}} alt='' width=150px height=100px /></li>
+
+            <?php $i = $i +1;?>
+            @endif
+            @endforeach
         </ol>
     </div>
   </div>
   <div class="col-md-4">
+  @foreach($detail as $detail)
 <h3>Product Name </h3>
-<h4>Rp. 1.500.000,00 </h4>
+<h4>{{$detail->nama}}</h4>
+<h4>
+
+</h4>
+<hr>
+<h3>Harga</h3>
+<h4>Rp. {{number_format($detail->harga,0,",",".")}}</h4>
 <hr>
 <h3>Dimension</h3>
-<h4>90 x 80 x 2000 cm</h4>
+<h4>{{$detail->dimensi}}</h4>
 <hr>
 <h3>Material</h3>
-<h4>Wood</h4>
-<h4>Stainless Steel</h4>
+<h4>{{$detail->material}}</h4>
 <hr>
 <h3>Description</h3>
-<p>Lorem ipsum dolor sit amet, ex corpora laboramus abhorreant mei. Solum lucilius elaboraret no cum, sit at perfecto interpretaris. Wisi interpretaris eos ei, an eum posse dissentias adversarium. Pri no paulo similique, verterem scripserit an est.
-Sed ea tation sanctus probatus, sit movet nonumy vituperatoribus ea, ut amet ceteros temporibus pri. An eum tincidunt consectetuer, id quo nibh iusto euripidis, duo nostro virtute fierent ad. Senserit maluisset necessitatibus ex eos. Cu mea amet maiestatis. Id sea labore molestie. Eum novum legimus graecis no.
+<p>{{$detail->deskripsi}}
 </p>
+    @endforeach
 <br>
 <form action={{url('/addtocart/')}} method="post">
 <input type="submit" class="btn btn-default" value="Add To Cart" style="color:white; width: 10em; background-color: #555555" />
 </form>
+  </div>
+  <div class="col-md-2">
+ 
+
   </div>
 
 </div>

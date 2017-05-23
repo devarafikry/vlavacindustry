@@ -71,7 +71,7 @@
         <hr>
        @foreach($product as $product)
 	
-		<a href={{url('/product/id')}}>
+		<a href={{url('/product/'.$product->id)}}>
             <div class="card">
             <img src={{asset('storage/'.$product->img)}} height=200px width=200px alt='error' style="margin-right:25px">
               <div >

@@ -73,7 +73,7 @@ class RoomController extends Controller
          $product = DB::table('product')
             ->join('room_product', 'product.id', '=', 'room_product.id_product')
             ->join('room', 'room.id', '=', 'room_product.id_room')->where('room.id','=',3)
-            ->select('*')
+            ->select('product.id','product.img','product.nama','product.harga')
             ->get();
         $room_name = "Living Room";
       } else if($request->room_name == 'bedroom'){
@@ -84,7 +84,7 @@ class RoomController extends Controller
           $product = DB::table('product')
             ->join('room_product', 'product.id', '=', 'room_product.id_product')
             ->join('room', 'room.id', '=', 'room_product.id_room')->where('room.id','=',6)
-            ->select('*')
+            ->select('product.id','product.img','product.nama','product.harga')
             ->get();
         $room_name = "Business Space";
       } else if($request->room_name == 'kitchen'){

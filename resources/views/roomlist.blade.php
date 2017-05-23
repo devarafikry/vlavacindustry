@@ -1,6 +1,6 @@
 @extends('layouts.header')
 <!-- Page Content -->
-<div class="container" style="padding-top : 120px">
+<div class="container" style="padding-top : 120px;margin-bottom: 7%;">
   <div class="row">
     <div class="col-sm-4">
 <h6><a href={{url('/')}}>Home</a>-><a>{{$room_name}}</a></h6>
